@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+  <title>心臟跳動</title>
+  <style>
+  
+  p {text-align: center;}
+  div {text-align: center;}
+  </style>
+
+
+<style>
+
+</style>
+</head>
+
+<body>
+<p>
+<img id="theImage" src='heart/00.png'  width="300" >
+</p>
+<p>
+
+<input type="button" id="theButton" value=" < "  onclick="picturePrevious()">
+<input type="button" id="theButton" value=" PLAY "  onclick="pictureLoop()">
+<input type="button" id="theButton" value=" STOP "  onclick="stopLoop()">
+<input type="button" id="theButton" value=" > "  onclick="pictureNext()">
+</p>
+<p>
+
+<input type="button" id="theButton" value=" SLOW "  onclick="slow()">
+<input type="button" id="theButton" value=" FAST "  onclick="fast()">
+</p>
+<p>
+
+速度：<span id="speed">5</span>
+
+</p>
+
+
+
+
+
+
+<script>
+
+	var imgArray = [
+		'heart/00.png',
+		'heart/01.png',
+		'heart/02.png',
+		'heart/03.png',
+		'heart/04.png',
+		'heart/05.png',
+		'heart/06.png',
+		'heart/07.png',
+		'heart/08.png',
+		'heart/09.png',
+		'heart/10.png',
+		'heart/11.png',
+		'heart/12.png',
+		'heart/13.png',
+		'heart/14.png',
+		'heart/15.png',
+		'heart/16.png',
+		'heart/17.png',
+		'heart/18.png',
+		'heart/19.png',
+		'heart/20.png',
+		'heart/21.png',
+		'heart/22.png',
+		'heart/23.png',
+		'heart/24.png',
+		'heart/25.png',
+		'heart/26.png',
+		'heart/27.png',
+		'heart/28.png',
+		'heart/29.png',
+		'heart/30.png',
+		'heart/31.png',
+		'heart/32.png',
+		'heart/33.png',
+		'heart/34.png',
+		'heart/35.png',
+		'heart/36.png',
+		'heart/37.png',
+		'heart/38.png',
+		'heart/39.png',
+		'heart/40.png',
+		'heart/41.png',
+		'heart/42.png',
+		'heart/43.png',
+		'heart/44.png',
+		'heart/45.png',
+		'heart/46.png',
+		'heart/47.png',
+		'heart/48.png',
+		'heart/49.png',
+		'heart/50.png',
+		'heart/51.png',
+		'heart/52.png',
+		'heart/53.png',
+		'heart/54.png',
+		'heart/55.png',
+		'heart/56.png',
+		'heart/57.png',
+		'heart/58.png',
+		'heart/59.png',
+		'heart/60.png',
+		'heart/61.png',
+		'heart/62.png',
+		'heart/63.png',
+		'heart/64.png',
+		'heart/65.png',
+		'heart/66.png',
+		'heart/67.png',
+		'heart/68.png',
+		'heart/69.png',
+		'heart/70.png',
+		'heart/71.png',
+		'heart/72.png',
+		'heart/73.png',
+		'heart/74.png',
+		'heart/75.png',
+		'heart/76.png',
+		'heart/77.png',
+		'heart/78.png',
+		'heart/79.png',
+		'heart/80.png',
+		'heart/81.png',
+		'heart/82.png',
+		'heart/83.png',
+		'heart/84.png',
+		'heart/85.png',];
+
+
+
+
+	
+	let counter = 0;
+
+	function picturePrevious(){
+		counter--; 
+		if (counter < 0 ){
+			counter = imgArray.length -1 ;}		
+		document.getElementById("theImage").src= imgArray[counter] ;
+	}	
+	
+	function pictureNext(){
+		counter++; 
+		if (counter >= imgArray.length - 1){
+			counter = 0;}
+
+		document.getElementById("theImage").src= imgArray[counter] ;
+	}
+
+	function pictureLoop(){		
+		slideShow();
+	}	
+
+	
+
+//	var imgDuration = document.getElementById("time").value;
+	var speed = parseInt(document.getElementById("speed").innerHTML);
+
+	console.log(imgDuration);
+
+	function slideShow() {
+		var imgDuration = 200 - 20*speed;
+		setTimeout(function() {
+			document.getElementById('theImage').src = imgArray[counter];
+			//document.getElementById('theImage').className = "";
+			},imgDuration);
+
+
+		counter++;		
+		myVar = setTimeout(slideShow, imgDuration);
+		
+		if (counter == imgArray.length) { 
+			counter = 0; 
+			}
+		
+		}
+	
+	function stopLoop() {
+		clearTimeout(myVar);	
+	}
+
+	function slow() {
+		speed -= 1;
+		if (speed <= 1){speed = 1}
+		//document.getElementById("speed").value = imgDuration ;
+		document.getElementById("speed").innerHTML = speed;
+
+
+
+	}
+
+
+	function fast() {
+		speed += 1;
+		if (speed >= 10){speed = 10}
+		//document.getElementById("speed").value = imgDuration;
+		document.getElementById("speed").innerHTML = speed;
+
+	}	
+	
+</script>
+
+</body>
+</html>
